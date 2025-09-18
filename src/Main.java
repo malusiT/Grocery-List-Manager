@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -63,12 +61,27 @@ public class Main {
 
     public static void addItem(){
         System.out.println("Enter grocery Item");
-        String item = scanner.nextLine().trim();
-        if(item.isEmpty()){
+        String[] rawItem = scanner.nextLine().trim().split(",");
+
+        if(rawItem.length == 0){
             System.out.println("No item entered");
             return;
         }
-        groceries.add(item);
+
+        List<String> trimmedList = new ArrayList<>();
+        for(String item : rawItem){
+            String trimmedItem = item.trim();
+            if(trimmedItem.isEmpty()){
+                continue;
+            }
+            if(groceries.contains(trimmedItem)){
+                continue;
+            }
+            trimmedList.add(trimmedItem);
+        }
+
+
+        groceries.addAll(trimmedList);
         printList();
     }
 
@@ -81,7 +94,7 @@ public class Main {
         printList();
         System.out.println("Enter number of list to delete: ");
         try {
-            int choice = Integer.parseInt(scanner.nextLine().trim());
+            int choice = Integer.parseInt(scanner.nextLine().trim()) - 1;
             if(choice >= groceries.size() || choice < 0){
                 System.out.printf("Item number %d does not exist\n", choice);
                 return;
@@ -89,11 +102,12 @@ public class Main {
             String removerItem = groceries.remove(choice);
             System.out.printf("Removed, %s\n",removerItem);
         }catch (NumberFormatException e) {
-            System.out.println("Enter a valid Number from 0 to " + groceries.size() + ": " );
+            System.out.println("Enter a valid Number from 1 to " + groceries.size() + ": " );
         }
     }
     public static void printList(){
-        int count = 0;
+        int count = 1;
+        groceries.sort(Comparator.naturalOrder());
         for(String item : groceries){
 //            System.out.println(item);
             System.out.printf("%d - %s\n", count, item);
