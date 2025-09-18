@@ -9,3 +9,6 @@ A Java CLI tool for managing a grocery list
 ## How to Run
 1. Compile: `javac Main.java`
 2. Run: `java Main`
+
+
+Copyright (c) 2025 Malusi Mhlanga
