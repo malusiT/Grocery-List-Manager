@@ -43,9 +43,9 @@ Enter grocery items: milk, bread, eggs, apples
 # Learning Objectives 📚
 This project demonstrates:
 
-- **ArrayList manipulation and CRUD operations
-- **String processing and input validation
-- **Exception handling best practices
-- **Clean code structure and method organization
+- ArrayList manipulation and CRUD operations
+- String processing and input validation
+- Exception handling best practices
+- Clean code structure and method organization
 
 # Copyright © 2025 Malusi Mhlanga
